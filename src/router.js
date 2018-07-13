@@ -5,6 +5,7 @@ import BaseLite from './layouts/BaseLite.vue'
 import BaseAdmin from './layouts/BaseAdmin.vue'
 import Home from './views/Home.vue'
 import About from './views/About.vue'
+import NotFound from './components/404.vue'
 
 Vue.use(Router)
 
@@ -31,6 +32,16 @@ export default new Router({
     {
       path: '/admin',
       component: BaseAdmin
+    },
+    {
+      path: '*',
+      component: BaseLite,
+      children: [
+        {
+          path: '*',
+          component: NotFound
+        }
+      ]
     }
   ]
 })
