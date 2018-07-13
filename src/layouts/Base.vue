@@ -31,21 +31,6 @@
     <v-content>
       <router-view/>
     </v-content>
-    <v-navigation-drawer
-      temporary
-      :right="right"
-      v-model="rightDrawer"
-      app
-    >
-      <v-list>
-        <v-list-tile @click="right = !right">
-          <v-list-tile-action>
-            <v-icon>compare_arrows</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-title>Switch drawer (click me)</v-list-tile-title>
-        </v-list-tile>
-      </v-list>
-    </v-navigation-drawer>
     <v-footer app>
       <span>&copy; 2017</span>
     </v-footer>
@@ -53,23 +38,12 @@
 </template>
 
 <script>
+import { baseNavigation } from '@/config/navigation'
+
 export default {
   data: () => ({
-    drawer: true,
-    items: [
-      {
-        icon: 'home',
-        title: 'Overview'
-      },
-      {
-        icon: 'map',
-        title: 'Live Map'
-      },
-      {
-        icon: 'schedule',
-        title: 'Schedule'
-      }
-    ],
+    drawer: false,
+    items: baseNavigation,
     right: true,
     title: 'TrainTracker'
   }),
