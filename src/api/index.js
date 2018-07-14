@@ -413,6 +413,14 @@ export function fetchTrains () {
   })
 }
 
+export function fetchActiveTrains () {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(trains.filter(train => train.status === 'OK' && train.operating))
+    }, 300)
+  })
+}
+
 export function fetchTrain (trainId) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {

@@ -4,14 +4,14 @@
 
 <script>
 import L from 'leaflet'
-import { fetchTrains, fetchCoordinates } from '@/api'
+import { fetchActiveTrains } from '@/api'
 
 const state = {
   map: null,
-  // marker: null,
   tileLayer: null,
   layers: [],
   activeTrains: [],
+  markerInfo: [],
   markers: []
 }
 
@@ -20,12 +20,11 @@ export default {
     return state
   },
   mounted () {
-    fetchTrains().then((response) => {
-      const trains = response
-      this.activeTrains = trains.filter(train => train.status === 'OK' && train.operating)
+    fetchActiveTrains().then((response) => {
+      this.activeTrains = response
       this.initMap()
     })
-    // this.updateCoordinates()
+    this.updateMarkers()
   },
   methods: {
     initMap () {
@@ -34,31 +33,57 @@ export default {
       const osmAttrib = 'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
       const tileLayer = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 16, attribution: osmAttrib})
 
-      let map = L.map('map').setView(center, 12)
-      tileLayer.addTo(map)
-      this.markers = this.getTrainMarkers()
-      this.markers.forEach(function (marker) {
-        marker.markerObj.addTo(map).bindPopup(marker.popupText, { autoClose: false }).openPopup()
-      })
+      this.map = L.map('map').setView(center, 12)
+      tileLayer.addTo(this.map)
+
+      this.loadMarkers()
     },
-    getTrainMarkers () {
-      let markerInfo = []
+    fetchMarkerInfo () {
       if (this.activeTrains && this.activeTrains.length) {
-        this.activeTrains.forEach(function (train, index) {
-          markerInfo[index] = {
-            markerObj: L.marker(train.coordinates),
+        this.markerInfo = this.activeTrains.map(function (train) {
+          return {
+            coordinates: train.coordinates,
+            trainId: train.id,
             popupText: train.id.toString()
           }
         })
       }
-      return markerInfo
     },
-    updateCoordinates () {
+    makeMarkers () {
+      this.markers = this.markerInfo.map(function (markerInfo) {
+        const marker = L.marker(markerInfo.coordinates).bindPopup(markerInfo.popupText, { autoClose: false })
+        marker.trainId = markerInfo.trainId
+        return marker
+      })
+    },
+    addMarkersToMap () {
+      let map = this.map
+      this.markers.forEach(function (marker) {
+        marker.addTo(map).openPopup()
+      })
+      this.map = map
+    },
+    loadMarkers () {
+      this.fetchMarkerInfo()
+      this.makeMarkers()
+      this.addMarkersToMap()
+    },
+    updateMarkers () {
       setInterval(() => {
-        fetchCoordinates().then((response) => {
-          this.marker.setLatLng(response)
+        fetchActiveTrains().then((response) => {
+          this.activeTrains = response
+        }).then(() => {
+          this.deleteMarkers()
+          this.loadMarkers()
         })
       }, 2000)
+    },
+    deleteMarkers () {
+      let map = this.map
+      this.markers.forEach(function (marker) {
+        map.removeLayer(marker)
+      })
+      this.map = map
     }
   }
 }
