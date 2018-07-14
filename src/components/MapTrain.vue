@@ -31,7 +31,7 @@ export default {
       const center = [14.6054402, 120.982061]
       const osmUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
       const osmAttrib = 'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
-      const tileLayer = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 16, attribution: osmAttrib})
+      const tileLayer = new L.TileLayer(osmUrl, {minZoom: 13, maxZoom: 20, attribution: osmAttrib})
 
       this.map = L.map('map').setView(center, 12)
       tileLayer.addTo(this.map)
