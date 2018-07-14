@@ -91,8 +91,8 @@ export const stations = [
     name: 'Roosevelt',
     order: 0,
     coordinates: {
-      lat: 14.657494,
-      long: 121.021211
+      lat: 14.657665000000021,
+      long: 121.02109900000005
     }
   },
   {
@@ -100,8 +100,8 @@ export const stations = [
     name: 'Balintawak',
     order: 1,
     coordinates: {
-      lat: 14.657344,
-      long: 121.003961
+      lat: 14.657499,
+      long: 121.00359000000003
     }
   },
   {
@@ -118,8 +118,152 @@ export const stations = [
     name: '5th Avenue',
     order: 3,
     coordinates: {
-      lat: 14.630642,
-      long: 120.981397
+      lat: 14.644314000000001,
+      long: 120.98355399999991
+    }
+  },
+  {
+    id: 'rpapa',
+    name: 'R. Papa',
+    order: 4,
+    coordinates: {
+      lat: 14.635923000000016,
+      long: 120.98230000000001
+    }
+  },
+  {
+    id: 'abad_santos',
+    name: 'Abad Santos',
+    order: 5,
+    coordinates: {
+      lat: 14.63063500000001,
+      long: 120.981403
+    }
+  },
+  {
+    id: 'blumentritt',
+    name: 'Blumentritt',
+    order: 6,
+    coordinates: {
+      lat: 14.622612999999996,
+      long: 120.98288200000002
+    }
+  },
+  {
+    id: 'tayuman',
+    name: 'Tayuman',
+    order: 7,
+    coordinates: {
+      lat: 14.616637000000017,
+      long: 120.98267999999996
+    }
+  },
+  {
+    id: 'bambang',
+    name: 'Bambang',
+    order: 8,
+    coordinates: {
+      lat: 14.611227000000024,
+      long: 120.98247900000001
+    }
+  },
+  {
+    id: 'doroteo_jose',
+    name: 'Doroteo Jose',
+    order: 9,
+    coordinates: {
+      lat: 14.60530800000003,
+      long: 120.982031
+    }
+  },
+  {
+    id: 'carriedo',
+    name: 'Carriedo',
+    order: 10,
+    coordinates: {
+      lat: 14.599024000000004,
+      long: 120.98131400000011
+    }
+  },
+  {
+    id: 'central_station',
+    name: 'Central Station',
+    order: 11,
+    coordinates: {
+      lat: 14.592337221150366,
+      long: 120.99836398425305
+    }
+  },
+  {
+    id: 'united_nations_avenue',
+    name: 'United Nations Avenue',
+    order: 12,
+    coordinates: {
+      lat: 14.58221320396174,
+      long: 121.00127198425298
+    }
+  },
+  {
+    id: 'pedro_gil',
+    name: 'Pedro Gil',
+    order: 13,
+    coordinates: {
+      lat: 14.57660600000001,
+      long: 120.98796799999991
+    }
+  },
+  {
+    id: 'quirino',
+    name: 'Quirino',
+    order: 14,
+    coordinates: {
+      lat: 14.570292999999998,
+      long: 120.99157300000002
+    }
+  },
+  {
+    id: 'vito_cruz',
+    name: 'Vito Cruz',
+    order: 15,
+    coordinates: {
+      lat: 14.563107171555322,
+      long: 121.0115719842529
+    }
+  },
+  {
+    id: 'gil_puyat',
+    name: 'Gil Puyat',
+    order: 16,
+    coordinates: {
+      lat: 14.55380215578776,
+      long: 121.01380298425295
+    }
+  },
+  {
+    id: 'libertad',
+    name: 'Libertad',
+    order: 17,
+    coordinates: {
+      lat: 14.547322144813078,
+      long: 121.01534798425291
+    }
+  },
+  {
+    id: 'edsa_taft',
+    name: 'EDSA Taft',
+    order: 18,
+    coordinates: {
+      lat: 14.538595130040378,
+      long: 121.01731898425294
+    }
+  },
+  {
+    id: 'baclaran',
+    name: 'Baclaran',
+    order: 19,
+    coordinates: {
+      lat: 14.541936862067116,
+      long: 121.00026007156373
     }
   }
 ]
