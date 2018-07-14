@@ -21,6 +21,7 @@
               item-value="id"
               label="Drop-off station"
             ></v-select>
+            {{ getTotalTravelTime(startStation, endStation) }} min
             Price for beep card: <h3>{{ getBeepFare(startStation, endStation) }}</h3>
             <br/>
             Price for single ticket journey: <h3>{{ getSingleJourneyFare(startStation, endStation) }}</h3>
@@ -68,6 +69,24 @@ export default {
       const endStationOrder = stations.find(station => { return station.id === endStation }).order
 
       return fareMatrixForSingleJourney[startStationOrder][endStationOrder]
+    },
+    getTotalTravelTime (startStation, endStation) {
+      if (!startStation || !endStation) {
+        return
+      }
+      const startStationOrder = stations.find(station => { return station.id === startStation }).order
+      const endStationOrder = stations.find(station => { return station.id === endStation }).order
+
+      const stationsInTravel = stations.filter(station => {
+        return startStationOrder < endStationOrder
+          ? station.order >= startStationOrder && station.order < endStationOrder
+          : station.order >= endStationOrder && station.order < startStationOrder
+      })
+
+      const totalTravelTime = stationsInTravel.reduce(
+        (accumulator, station) => accumulator + station.minutesToNextStation, 0
+      )
+      return totalTravelTime
     }
   }
 }
