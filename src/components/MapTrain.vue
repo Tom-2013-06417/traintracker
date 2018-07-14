@@ -4,7 +4,7 @@
 
 <script>
 import L from 'leaflet'
-import { fetchActiveTrains } from '@/api'
+import { fetchActiveTrains, stations } from '@/api'
 
 const state = {
   map: null,
@@ -84,6 +84,24 @@ export default {
         map.removeLayer(marker)
       })
       this.map = map
+    },
+    getRemainingTravelTime (currentStation, userStation) {
+      if (!currentStation || !userStation) {
+        return
+      }
+      const currentStationOrder = stations.find(station => { return station.id === currentStation }).order
+      const userStationOrder = stations.find(station => { return station.id === userStation }).order
+
+      const stationsInTravel = stations.filter(station => {
+        return currentStationOrder < userStationOrder
+          ? station.order >= currentStationOrder && station.order < userStationOrder
+          : station.order >= userStationOrder && station.order < currentStationOrder
+      })
+
+      const remainingTravelTime = stationsInTravel.reduce(
+        (accumulator, station) => accumulator + station.minutesToNextStation, 0
+      )
+      return remainingTravelTime
     }
   }
 }
