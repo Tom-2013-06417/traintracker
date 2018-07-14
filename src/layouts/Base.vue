@@ -5,6 +5,7 @@
       permanent
       enable-resize-watcher
       :mini-variant.sync="drawer"
+      touchless
       app
     >
       <v-toolbar flat class="transparent">
@@ -27,6 +28,7 @@
           class="py-2"
           value="true"
           v-for="(item, i) in items"
+          :to="item.url"
           :key="i"
         >
           <v-list-tile-action>
@@ -39,6 +41,7 @@
       </v-list>
     </v-navigation-drawer>
     <v-toolbar
+      color="orange accent-1"
       app
     >
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>

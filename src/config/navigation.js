@@ -1,29 +1,30 @@
 export const baseNavigation = [
   {
     icon: 'home',
-    title: 'Overview'
+    title: 'Overview',
+    url: '/'
   },
   {
     icon: 'map',
-    title: 'Live Map'
+    title: 'Live Map',
+    url: '/live'
   },
   {
     icon: 'schedule',
-    title: 'Schedule'
+    title: 'Schedule',
+    url: '/schedules'
   }
 ]
 
 export const baseAdminNavigation = [
   {
     icon: 'home',
-    title: 'Home'
-  },
-  {
-    icon: 'dvr',
-    title: 'Dashboard TV'
+    title: 'Home',
+    url: '/admin'
   },
   {
     icon: 'train',
-    title: 'Trains'
+    title: 'Trains',
+    url: '/admin/trains'
   }
 ]
