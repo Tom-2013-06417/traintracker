@@ -3,141 +3,46 @@ export const trains = [
     id: 1,
     max_capacity: 3000,
     current_capacity: 1700,
+    current_station: 'doroteo_jose',
     status: 'OK', // OOS, DEC
     operating: true,
-    coordinates: [14.6054402, 120.982061],
-    model: {
-      name: '1000 series',
-      year: 1984,
-      manufacturer: 'SA Ateliers de Constructions Electriques de Charleroi',
-      car_type: '8-axle (4-bogie) rigid body',
-      length: 29280,
-      width: 2500,
-      height: 3535,
-      configuration: 'MC-MC 59590 mm (2-car)',
-      articulation: 'double',
-      doors: {
-        width: 2500,
-        type: 'plug',
-        doors_per_side: 5
-      },
-      traction_system: 'DC 218 Kw Chopper Type x 1',
-      traction_power: '750 V DC OCS; pantograph power connection',
-      body_material: 'BI sheet',
-      ventilation: 'Forced ventilation'
-    }
+    coordinates: [14.6054402, 120.982061]
   },
   {
     id: 2,
     max_capacity: 3000,
     current_capacity: 0,
+    current_station: 'carriedo',
     status: 'OOS',
     operating: false,
-    coordinates: [14.6054402, 120.982061],
-    model: {
-      name: '1000 series',
-      year: 1984,
-      manufacturer: 'SA Ateliers de Constructions Electriques de Charleroi',
-      car_type: '8-axle (4-bogie) rigid body',
-      length: 29280,
-      width: 2500,
-      height: 3535,
-      configuration: 'MC-MC 59590 mm (2-car)',
-      articulation: 'double',
-      doors: {
-        width: 2500,
-        type: 'plug',
-        doors_per_side: 5
-      },
-      traction_system: 'DC 218 Kw Chopper Type x 1',
-      traction_power: '750 V DC OCS; pantograph power connection',
-      body_material: 'BI sheet',
-      ventilation: 'Forced ventilation'
-    }
+    coordinates: [14.6054402, 120.982061]
   },
   {
     id: 3,
     max_capacity: 3000,
     current_capacity: 0,
+    current_station: '',
     status: 'DEC',
     operating: false,
-    coordinates: [0, 0],
-    model: {
-      name: '1000 series',
-      year: 1984,
-      manufacturer: 'SA Ateliers de Constructions Electriques de Charleroi',
-      car_type: '8-axle (4-bogie) rigid body',
-      length: 29280,
-      width: 2500,
-      height: 3535,
-      configuration: 'MC-MC 59590 mm (2-car)',
-      articulation: 'double',
-      doors: {
-        width: 2500,
-        type: 'plug',
-        doors_per_side: 5
-      },
-      traction_system: 'DC 218 Kw Chopper Type x 1',
-      traction_power: '750 V DC OCS; pantograph power connection',
-      body_material: 'BI sheet',
-      ventilation: 'Forced ventilation'
-    }
+    coordinates: [0, 0]
   },
   {
     id: 4,
     max_capacity: 3000,
     current_capacity: 0,
+    current_station: 'monumento',
     status: 'OK',
     operating: false,
-    coordinates: [0, 0],
-    model: {
-      name: '1000 series',
-      year: 1984,
-      manufacturer: 'SA Ateliers de Constructions Electriques de Charleroi',
-      car_type: '8-axle (4-bogie) rigid body',
-      length: 29280,
-      width: 2500,
-      height: 3535,
-      configuration: 'MC-MC 59590 mm (2-car)',
-      articulation: 'double',
-      doors: {
-        width: 2500,
-        type: 'plug',
-        doors_per_side: 5
-      },
-      traction_system: 'DC 218 Kw Chopper Type x 1',
-      traction_power: '750 V DC OCS; pantograph power connection',
-      body_material: 'BI sheet',
-      ventilation: 'Forced ventilation'
-    }
+    coordinates: [0, 0]
   },
   {
     id: 5,
     max_capacity: 3000,
     current_capacity: 1700,
+    current_station: 'pedro_gil',
     status: 'OK', // OOS, DEC
     operating: true,
-    coordinates: [14.5763261, 120.985999],
-    model: {
-      name: '1000 series',
-      year: 1984,
-      manufacturer: 'SA Ateliers de Constructions Electriques de Charleroi',
-      car_type: '8-axle (4-bogie) rigid body',
-      length: 29280,
-      width: 2500,
-      height: 3535,
-      configuration: 'MC-MC 59590 mm (2-car)',
-      articulation: 'double',
-      doors: {
-        width: 2500,
-        type: 'plug',
-        doors_per_side: 5
-      },
-      traction_system: 'DC 218 Kw Chopper Type x 1',
-      traction_power: '750 V DC OCS; pantograph power connection',
-      body_material: 'BI sheet',
-      ventilation: 'Forced ventilation'
-    }
+    coordinates: [14.5763261, 120.985999]
   }
 ]
 
@@ -429,6 +334,19 @@ export function fetchTrain (trainId) {
         resolve(train)
       } else {
         reject(Error('Train does not exist'))
+      }
+    }, 300)
+  })
+}
+
+export function fetchStationById (stationId) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const station = stations.find(station => station.id === stationId)
+      if (station) {
+        resolve(station)
+      } else {
+        reject(Error('Station does not exist'))
       }
     }, 300)
   })

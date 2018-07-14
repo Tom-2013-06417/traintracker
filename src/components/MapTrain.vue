@@ -4,7 +4,7 @@
 
 <script>
 import L from 'leaflet'
-import { fetchActiveTrains, stations } from '@/api'
+import { fetchActiveTrains, stations, fetchStationById } from '@/api'
 
 const state = {
   map: null,
@@ -24,7 +24,7 @@ export default {
       this.activeTrains = response
       this.initMap()
     })
-    this.updateMarkers()
+    this.updateTrainMarkers()
   },
   methods: {
     initMap () {
@@ -36,7 +36,17 @@ export default {
       this.map = L.map('map').setView(center, 12)
       tileLayer.addTo(this.map)
 
-      this.loadMarkers()
+      const userStationId = this.$store.getters.startStation
+      fetchStationById(userStationId).then((response) => {
+        const userCoordinates = [response.coordinates.lat, response.coordinates.long]
+        const popupText = 'You are at ' + response.name
+        let userMarker = L.marker(userCoordinates).bindPopup(popupText, { autoClose: false })
+        userMarker.markerType = 'user'
+        userMarker.addTo(this.map)
+        userMarker.openPopup()
+      })
+
+      this.loadTrainMarkers()
     },
     fetchMarkerInfo () {
       if (this.activeTrains && this.activeTrains.length) {
@@ -44,46 +54,52 @@ export default {
           return {
             coordinates: train.coordinates,
             trainId: train.id,
-            popupText: train.id.toString()
+            currentStation: train.current_station
           }
         })
       }
     },
-    makeMarkers () {
-      this.markers = this.markerInfo.map(function (markerInfo) {
-        const marker = L.marker(markerInfo.coordinates).bindPopup(markerInfo.popupText, { autoClose: false })
+    makeTrainMarkers () {
+      const userStation = this.$store.getters.startStation
+      this.markers = this.markerInfo.map((markerInfo) => {
+        const remainingTime = this.getRemainingTravelTime(markerInfo.currentStation, userStation)
+        const marker = L.marker(markerInfo.coordinates)
+        if (remainingTime) {
+          const popupText = remainingTime + ' mins away'
+          marker.bindPopup(popupText, { autoClose: false })
+        }
+        marker.markerType = 'train'
         marker.trainId = markerInfo.trainId
+
         return marker
       })
     },
     addMarkersToMap () {
-      let map = this.map
-      this.markers.forEach(function (marker) {
-        marker.addTo(map).openPopup()
+      this.markers.forEach((marker) => {
+        marker.addTo(this.map).openPopup()
       })
-      this.map = map
     },
-    loadMarkers () {
+    loadTrainMarkers () {
       this.fetchMarkerInfo()
-      this.makeMarkers()
+      this.makeTrainMarkers()
       this.addMarkersToMap()
     },
-    updateMarkers () {
+    updateTrainMarkers () {
       setInterval(() => {
         fetchActiveTrains().then((response) => {
           this.activeTrains = response
         }).then(() => {
-          this.deleteMarkers()
-          this.loadMarkers()
+          this.deleteTrainMarkers()
+          this.loadTrainMarkers()
         })
       }, 2000)
     },
-    deleteMarkers () {
-      let map = this.map
-      this.markers.forEach(function (marker) {
-        map.removeLayer(marker)
+    deleteTrainMarkers () {
+      this.markers.forEach((marker) => {
+        if (marker.markerType === 'train') {
+          this.map.removeLayer(marker)
+        }
       })
-      this.map = map
     },
     getRemainingTravelTime (currentStation, userStation) {
       if (!currentStation || !userStation) {
