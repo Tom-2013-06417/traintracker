@@ -4,12 +4,13 @@
 
 <script>
 import L from 'leaflet'
-import { fetchTrains } from '@/api'
+import { fetchTrains, fetchCoordinates } from '@/api'
 
 export default {
   data () {
     return {
       map: null,
+      marker: null,
       tileLayer: null,
       layers: []
     }
@@ -21,6 +22,7 @@ export default {
   },
   mounted () {
     this.initMap()
+    this.updateCoordinates()
   },
   methods: {
     initMap () {
@@ -33,6 +35,13 @@ export default {
       let map = L.map('map').setView(center, 12)
       tileLayer.addTo(map)
       marker.addTo(map)
+    },
+    updateCoordinates () {
+      setInterval(() => {
+        fetchCoordinates().then((response) => {
+          this.marker.setLatLng(response)
+        })
+      }, 2000)
     }
   }
 }

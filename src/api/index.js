@@ -137,6 +137,21 @@ export const fareMatrixForSingleJourney = [
   [15, 15, 0, 15],
   [20, 15, 15, 0]
 ]
+export function fetchCoordinates () {
+  const stationCoordinates = [
+    [14.6054402, 120.982061], // Doroteo Jose
+    [14.5992548, 120.9791743], // Carriedo
+    [14.5927811, 120.9794726], // Central
+    [14.5928069, 120.9729065], // UN Ave
+    [14.5763261, 120.985999] // Pedro Gil
+  ]
+
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(stationCoordinates[Math.floor(Math.random() * 5)])
+    }, 300)
+  })
+}
 
 export function fetchTrains () {
   return new Promise((resolve, reject) => {
