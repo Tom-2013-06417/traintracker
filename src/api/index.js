@@ -149,7 +149,8 @@ export const stations = [
     coordinates: {
       lat: 14.657665000000021,
       long: 121.02109900000005
-    }
+    },
+    minutesToNextStation: 3
   },
   {
     id: 'balintawak',
@@ -158,7 +159,8 @@ export const stations = [
     coordinates: {
       lat: 14.657499,
       long: 121.00359000000003
-    }
+    },
+    minutesToNextStation: 4
   },
   {
     id: 'monumento',
@@ -167,7 +169,8 @@ export const stations = [
     coordinates: {
       lat: 14.654094,
       long: 120.983906
-    }
+    },
+    minutesToNextStation: 3
   },
   {
     id: 'fifth_avenue',
@@ -176,7 +179,8 @@ export const stations = [
     coordinates: {
       lat: 14.644314000000001,
       long: 120.98355399999991
-    }
+    },
+    minutesToNextStation: 3
   },
   {
     id: 'rpapa',
@@ -185,7 +189,8 @@ export const stations = [
     coordinates: {
       lat: 14.635923000000016,
       long: 120.98230000000001
-    }
+    },
+    minutesToNextStation: 2
   },
   {
     id: 'abad_santos',
@@ -194,7 +199,8 @@ export const stations = [
     coordinates: {
       lat: 14.63063500000001,
       long: 120.981403
-    }
+    },
+    minutesToNextStation: 3
   },
   {
     id: 'blumentritt',
@@ -203,7 +209,8 @@ export const stations = [
     coordinates: {
       lat: 14.622612999999996,
       long: 120.98288200000002
-    }
+    },
+    minutesToNextStation: 2
   },
   {
     id: 'tayuman',
@@ -212,7 +219,8 @@ export const stations = [
     coordinates: {
       lat: 14.616637000000017,
       long: 120.98267999999996
-    }
+    },
+    minutesToNextStation: 2
   },
   {
     id: 'bambang',
@@ -221,7 +229,8 @@ export const stations = [
     coordinates: {
       lat: 14.611227000000024,
       long: 120.98247900000001
-    }
+    },
+    minutesToNextStation: 2
   },
   {
     id: 'doroteo_jose',
@@ -230,7 +239,8 @@ export const stations = [
     coordinates: {
       lat: 14.60530800000003,
       long: 120.982031
-    }
+    },
+    minutesToNextStation: 3
   },
   {
     id: 'carriedo',
@@ -239,7 +249,8 @@ export const stations = [
     coordinates: {
       lat: 14.599024000000004,
       long: 120.98131400000011
-    }
+    },
+    minutesToNextStation: 3
   },
   {
     id: 'central_station',
@@ -248,7 +259,8 @@ export const stations = [
     coordinates: {
       lat: 14.592337221150366,
       long: 120.99836398425305
-    }
+    },
+    minutesToNextStation: 3
   },
   {
     id: 'united_nations_avenue',
@@ -257,7 +269,8 @@ export const stations = [
     coordinates: {
       lat: 14.58221320396174,
       long: 121.00127198425298
-    }
+    },
+    minutesToNextStation: 2
   },
   {
     id: 'pedro_gil',
@@ -266,7 +279,8 @@ export const stations = [
     coordinates: {
       lat: 14.57660600000001,
       long: 120.98796799999991
-    }
+    },
+    minutesToNextStation: 2
   },
   {
     id: 'quirino',
@@ -275,7 +289,8 @@ export const stations = [
     coordinates: {
       lat: 14.570292999999998,
       long: 120.99157300000002
-    }
+    },
+    minutesToNextStation: 3
   },
   {
     id: 'vito_cruz',
@@ -284,7 +299,8 @@ export const stations = [
     coordinates: {
       lat: 14.563107171555322,
       long: 121.0115719842529
-    }
+    },
+    minutesToNextStation: 2
   },
   {
     id: 'gil_puyat',
@@ -293,7 +309,8 @@ export const stations = [
     coordinates: {
       lat: 14.55380215578776,
       long: 121.01380298425295
-    }
+    },
+    minutesToNextStation: 2
   },
   {
     id: 'libertad',
@@ -302,7 +319,8 @@ export const stations = [
     coordinates: {
       lat: 14.547322144813078,
       long: 121.01534798425291
-    }
+    },
+    minutesToNextStation: 3
   },
   {
     id: 'edsa_taft',
@@ -311,7 +329,8 @@ export const stations = [
     coordinates: {
       lat: 14.538595130040378,
       long: 121.01731898425294
-    }
+    },
+    minutesToNextStation: 2
   },
   {
     id: 'baclaran',
@@ -320,7 +339,8 @@ export const stations = [
     coordinates: {
       lat: 14.541936862067116,
       long: 121.00026007156373
-    }
+    },
+    minutesToNextStation: 0
   }
 ]
 
