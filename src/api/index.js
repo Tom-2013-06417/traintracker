@@ -91,8 +91,8 @@ export const stations = [
     name: 'Roosevelt',
     order: 0,
     coordinates: {
-      lat: 0,
-      long: 0
+      lat: 14.657494,
+      long: 121.021211
     }
   },
   {
@@ -100,8 +100,8 @@ export const stations = [
     name: 'Balintawak',
     order: 1,
     coordinates: {
-      lat: 0,
-      long: 0
+      lat: 14.657344,
+      long: 121.003961
     }
   },
   {
@@ -109,8 +109,8 @@ export const stations = [
     name: 'Monumento',
     order: 2,
     coordinates: {
-      lat: 0,
-      long: 0
+      lat: 14.654094,
+      long: 120.983906
     }
   },
   {
@@ -118,8 +118,8 @@ export const stations = [
     name: '5th Avenue',
     order: 3,
     coordinates: {
-      lat: 0,
-      long: 0
+      lat: 14.630642,
+      long: 120.981397
     }
   }
 ]
