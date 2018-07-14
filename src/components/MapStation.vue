@@ -4,7 +4,6 @@
 
 <script>
 import L from 'leaflet'
-import { fetchTrains, fetchCoordinates } from '@/api'
 
 export default {
   data () {
@@ -15,14 +14,8 @@ export default {
       layers: []
     }
   },
-  beforeMount () {
-    fetchTrains().then((response) => {
-      this.trains = response
-    })
-  },
   mounted () {
     this.initMap()
-    this.updateCoordinates()
   },
   methods: {
     initMap () {
@@ -35,13 +28,6 @@ export default {
       let map = L.map('map').setView(center, 12)
       tileLayer.addTo(map)
       this.marker.addTo(map)
-    },
-    updateCoordinates () {
-      setInterval(() => {
-        fetchCoordinates().then((response) => {
-          this.marker.setLatLng(response)
-        })
-      }, 2000)
     }
   }
 }

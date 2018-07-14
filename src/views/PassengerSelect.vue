@@ -2,7 +2,7 @@
   <v-container fluid grid-list-xs pa-0>
     <v-layout row fill-height>
       <v-flex xs12>
-        <Map></Map>
+        <MapStation></MapStation>
       </v-flex>
     </v-layout>
     <v-layout row>
@@ -14,12 +14,12 @@
 </template>
 
 <script>
-import Map from '../components/Map.vue'
+import MapStation from '../components/MapStation.vue'
 import PassengerInput from '../components/PassengerInput.vue'
 
 export default {
   components: {
-    Map,
+    MapStation,
     PassengerInput
   }
 }

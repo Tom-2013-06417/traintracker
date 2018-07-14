@@ -1,15 +1,15 @@
 <template>
   <v-container fluid grid-list-xs pa-0>
-    <Map></Map>
+    <MapTrain></MapTrain>
   </v-container>
 </template>
 
 <script>
-import Map from '../components/Map.vue'
+import MapTrain from '../components/MapTrain.vue'
 
 export default {
   components: {
-    Map
+    MapTrain
   }
 }
 </script>
