@@ -9,7 +9,6 @@ import { store } from './store'
 import './registerServiceWorker'
 
 firebase.initializeApp(firebaseConfig)
-const db = firebase.database()
 
 Vue.config.productionTip = false
 
