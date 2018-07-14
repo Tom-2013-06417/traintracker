@@ -6,14 +6,20 @@
 
 <script>
 import L from 'leaflet'
+import { fetchTrains } from '@/api'
 
 export default {
   data () {
     return {
       map: null,
       tileLayer: null,
-      layers: []
+      layers: [],
     }
+  },
+  beforeMount () {
+    fetchTrains().then((response) => {
+      this.trains = response
+    })
   },
   mounted () {
     this.initMap()
