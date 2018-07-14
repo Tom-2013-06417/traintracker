@@ -32,7 +32,7 @@
           :key="i"
         >
           <v-list-tile-action>
-            <v-icon medium color="orange accent-3" v-html="item.icon"></v-icon>
+            <v-icon medium color="orange lighten-1" v-html="item.icon"></v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
             <v-list-tile-title class="black--text body-1" v-text="item.title"></v-list-tile-title>
@@ -41,7 +41,7 @@
       </v-list>
     </v-navigation-drawer>
     <v-toolbar
-      color="orange accent-1"
+      color="orange lighten-1"
       app
     >
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>

@@ -23,7 +23,9 @@
             item-value="id"
             label="Drop-off station"
           ></v-select>
-          {{ getTotalTravelTime(startStation, endStation) }} min
+          <div class="text-xs-right">
+            {{ getTotalTravelTime(startStation, endStation) }} min
+          </div>
         </v-flex>
       </v-layout>
     </v-container>

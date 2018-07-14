@@ -43,7 +43,7 @@ export default {
 
 <style lang="less" scoped>
 #map {
-  height: 90vh;
+  height: 85vh;
   z-index: 0;
 }
 .top-overlay {

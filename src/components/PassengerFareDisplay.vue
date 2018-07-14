@@ -24,7 +24,7 @@
     </v-layout>
     <v-spacer></v-spacer>
     <v-btn
-      color="green accent-3"
+      color="light-blue accent-3"
       block
       large
       :disabled="!startStation || !endStation"
