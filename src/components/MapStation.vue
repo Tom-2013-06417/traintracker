@@ -1,5 +1,13 @@
 <template>
-  <div id="map"></div>
+  <div>
+    <div id="map"></div>
+    <div class="top-overlay">
+      <slot name="top"></slot>
+    </div>
+    <div class="bottom-overlay">
+      <slot name="bottom"></slot>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -37,5 +45,17 @@ export default {
 #map {
   height: 90vh;
   z-index: 0;
+}
+.top-overlay {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+.bottom-overlay {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
 }
 </style>
