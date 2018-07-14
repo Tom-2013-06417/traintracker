@@ -18,6 +18,7 @@
               <PassengerFareDisplay
                 :startStation="startStation"
                 :endStation="endStation"
+                @ok="gotoLive"
               ></PassengerFareDisplay>
             </v-flex>
           </v-layout>
@@ -53,6 +54,11 @@ export default {
     },
     setEndStation (station) {
       this.endStation = station
+    },
+    gotoLive () {
+      this.$store.commit('setStartStation', this.startStation)
+      this.$store.commit('setEndStation', this.endStation)
+      this.$router.push({ path: '/live' })
     }
   }
 }

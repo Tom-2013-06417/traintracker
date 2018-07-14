@@ -24,6 +24,7 @@
     </v-layout>
     <v-spacer></v-spacer>
     <v-btn
+      @click="$emit('ok')"
       color="light-blue accent-3"
       block
       large
