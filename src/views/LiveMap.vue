@@ -13,7 +13,7 @@ export default {
     return {
       map: null,
       tileLayer: null,
-      layers: [],
+      layers: []
     }
   },
   beforeMount () {

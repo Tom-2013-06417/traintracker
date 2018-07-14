@@ -1,4 +1,4 @@
-const trains = [
+export const trains = [
   {
     id: 1,
     max_capacity: 3000,
@@ -83,6 +83,59 @@ const trains = [
       ventilation: 'Forced ventilation'
     }
   }
+]
+
+export const stations = [
+  {
+    id: 'roosevelt',
+    name: 'Roosevelt',
+    order: 0,
+    coordinates: {
+      lat: 0,
+      long: 0
+    }
+  },
+  {
+    id: 'balintawak',
+    name: 'Balintawak',
+    order: 1,
+    coordinates: {
+      lat: 0,
+      long: 0
+    }
+  },
+  {
+    id: 'monumento',
+    name: 'Monumento',
+    order: 2,
+    coordinates: {
+      lat: 0,
+      long: 0
+    }
+  },
+  {
+    id: 'fifth_avenue',
+    name: '5th Avenue',
+    order: 3,
+    coordinates: {
+      lat: 0,
+      long: 0
+    }
+  }
+]
+
+export const fareMatrixForBeep = [
+  [11, 13, 15, 16],
+  [13, 11, 13, 15],
+  [15, 13, 11, 12],
+  [16, 15, 12, 11]
+]
+
+export const fareMatrixForSingleJourney = [
+  [0, 15, 15, 20],
+  [15, 0, 15, 15],
+  [15, 15, 0, 15],
+  [20, 15, 15, 0]
 ]
 
 export function fetchTrains () {

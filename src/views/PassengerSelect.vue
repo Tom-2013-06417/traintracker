@@ -29,59 +29,11 @@
 </template>
 
 <script>
-
-const stations = [
-  {
-    id: 'roosevelt',
-    name: 'Roosevelt',
-    order: 0,
-    coordinates: {
-      lat: 0,
-      long: 0
-    }
-  },
-  {
-    id: 'balintawak',
-    name: 'Balintawak',
-    order: 1,
-    coordinates: {
-      lat: 0,
-      long: 0
-    }
-  },
-  {
-    id: 'monumento',
-    name: 'Monumento',
-    order: 2,
-    coordinates: {
-      lat: 0,
-      long: 0
-    }
-  },
-  {
-    id: 'fifth_avenue',
-    name: '5th Avenue',
-    order: 3,
-    coordinates: {
-      lat: 0,
-      long: 0
-    }
-  }
-]
-
-const fareMatrixForBeep = [
-  [11, 13, 15, 16],
-  [13, 11, 13, 15],
-  [15, 13, 11, 12],
-  [16, 15, 12, 11]
-]
-
-const fareMatrixForSingleJourney = [
-  [0, 15, 15, 20],
-  [15, 0, 15, 15],
-  [15, 15, 0, 15],
-  [20, 15, 15, 0]
-]
+import {
+  stations,
+  fareMatrixForBeep,
+  fareMatrixForSingleJourney
+} from '../api'
 
 const getBeepFare = (startStation, endStation) => {
   if (!startStation || !endStation) {
