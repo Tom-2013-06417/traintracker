@@ -31,7 +31,6 @@ export default {
       const osmUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
       const osmAttrib = 'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
       const tileLayer = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 16, attribution: osmAttrib})
-      this.marker = L.marker(center).bindPopup('Hello, world! Doroteo Jose reppin\'').openPopup()
 
       let map = L.map('map').setView(center, 12)
       tileLayer.addTo(map)
