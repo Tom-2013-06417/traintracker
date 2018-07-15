@@ -25,7 +25,7 @@
     <v-spacer></v-spacer>
     <v-btn
       @click="$emit('ok')"
-      color="light-blue accent-3"
+      color="teal lighten-2"
       block
       large
       :disabled="!startStation || !endStation"
