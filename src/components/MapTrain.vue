@@ -9,6 +9,7 @@ import { fetchActiveTrains, stations, fetchStationById } from '@/api'
 const state = {
   map: null,
   tileLayer: null,
+  trainIcon: null,
   layers: [],
   activeTrains: [],
   markerInfo: [],
@@ -32,6 +33,7 @@ export default {
       const osmUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
       const osmAttrib = 'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
       const tileLayer = new L.TileLayer(osmUrl, {minZoom: 13, maxZoom: 20, attribution: osmAttrib})
+      this.initIcons()
 
       this.map = L.map('map').setView(center, 12)
       tileLayer.addTo(this.map)
@@ -48,6 +50,14 @@ export default {
 
       this.loadTrainMarkers()
     },
+    initIcons () {
+      this.trainIcon = L.icon({
+        iconUrl: require('@/assets/img/train--blue.png'),
+        iconSize: [30, 40],
+        iconAnchor: [15, 20],
+        popupAnchor: [0, -25]
+      })
+    },
     fetchMarkerInfo () {
       if (this.activeTrains && this.activeTrains.length) {
         this.markerInfo = this.activeTrains.map(function (train) {
@@ -63,7 +73,7 @@ export default {
       const userStation = this.$store.getters.startStation
       this.markers = this.markerInfo.map((markerInfo) => {
         const remainingTime = this.getRemainingTravelTime(markerInfo.currentStation, userStation)
-        const marker = L.marker(markerInfo.coordinates)
+        const marker = L.marker(markerInfo.coordinates, { icon: this.trainIcon })
         if (remainingTime) {
           const popupText = remainingTime + ' mins away'
           marker.bindPopup(popupText, { autoClose: false })
